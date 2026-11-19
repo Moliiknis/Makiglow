@@ -1,0 +1,26 @@
+# Build output
+build/
+obj/
+bin/
+*.aex
+*.pdb
+*.obj
+*.exe
+*.ilk
+*.exp
+*.lib
+*.tlog
+.vs/
+*.user
+
+# Node / Vite
+node_modules/
+dist/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+
+# Installer output
+release/
