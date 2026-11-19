@@ -1,6 +1,6 @@
 ﻿; Inno Setup 6 script. Build with ..\build-installer.ps1
 #define AppName "Makiglow"
-#define AppVersion "1.0.0"
+#define AppVersion "1.0.1"
 #define RepoUrl "https://github.com/Moliiknis/Makiglow"
 ; Overridable for tests: ISCC /DPriv=lowest /DPanelRoot=C:\some\dir
 #ifndef Priv
@@ -30,7 +30,7 @@ PrivilegesRequired={#Priv}
 DisableProgramGroupPage=yes
 UsedUserAreasWarning=no
 CloseApplications=yes
-ShowLanguageDialog=auto
+ShowLanguageDialog=no
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 DefaultDirName={code:DefaultPluginDir}
@@ -40,13 +40,10 @@ UninstallFilesDir={app}\Uninstall\{#AppName}
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Messages]
-en.SelectDirLabel3=Choose the Plug-ins folder of your After Effects. Setup found the newest one automatically.
-ru.SelectDirLabel3=Выберите папку Plug-ins вашего After Effects. Установщик сам нашёл самую новую версию.
-en.FinishedLabelNoIcons=[name] is installed. Restart After Effects and open Effect > Makimchi > Makiglow.
-ru.FinishedLabelNoIcons=[name] установлен. Перезапустите After Effects и откройте Эффект → Makimchi → Makiglow.
+SelectDirLabel3=Choose the Plug-ins folder of your After Effects. Setup found the newest one automatically.
+FinishedLabelNoIcons=[name] is installed. Restart After Effects and open Effect > Makimchi > Makiglow.
 
 [Files]
 Source: "..\build\Release\Makiglow.aex"; DestDir: "{app}"; Flags: ignoreversion

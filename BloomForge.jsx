@@ -1,6 +1,6 @@
-// Bloom Forge — многопроходное свечение для After Effects (ScriptUI-панель).
-// Строит стек встроенных эффектов Glow с экспоненциально растущим радиусом
-// и связывает их выражениями с общими контроллерами "BF ..." на слое.
+// Makiglow - multi-pass glow for After Effects (ScriptUI panel).
+// Builds a stack of built-in Glow effects with an exponentially growing radius
+// and links them with expressions to shared "BF ..." controls on the layer.
 (function bloomForge(thisObj) {
     var SCRIPT_NAME = "Makiglow";
     var PREFIX = "BF ";
@@ -15,23 +15,23 @@
     };
 
     var PRESETS = [
-        {name: "Мягкое", passes: 6, radius: 150, intensity: 1.5, threshold: 50, falloff: 0.4, spread: 2},
-        {name: "Неон",   passes: 7, radius: 300, intensity: 2.5, threshold: 30, falloff: 0.3, spread: 2},
-        {name: "Блум",   passes: 8, radius: 600, intensity: 1.2, threshold: 70, falloff: 0.6, spread: 2.2},
-        {name: "Тонкое", passes: 4, radius: 60,  intensity: 1.0, threshold: 60, falloff: 0.5, spread: 2}
+        {name: "Soft", passes: 6, radius: 150, intensity: 1.5, threshold: 50, falloff: 0.4, spread: 2},
+        {name: "Neon",   passes: 7, radius: 300, intensity: 2.5, threshold: 30, falloff: 0.3, spread: 2},
+        {name: "Bloom",  passes: 8, radius: 600, intensity: 1.2, threshold: 70, falloff: 0.6, spread: 2.2},
+        {name: "Subtle", passes: 4, radius: 60,  intensity: 1.0, threshold: 60, falloff: 0.5, spread: 2}
     ];
 
     var state = {color: [1, 0.55, 0.15], tint: false};
 
-    // ---------- работа со слоями ----------
+    // ---------- layers ----------
 
     function getComp() {
         var comp = app.project.activeItem;
         return (comp && comp instanceof CompItem) ? comp : null;
     }
 
-    // После addProperty ссылки на другие эффекты могут стать невалидными,
-    // поэтому группу эффектов каждый раз берём заново.
+    // After addProperty, references to other effects may become invalid,
+    // so the effects group is fetched again every time.
     function effects(layer) {
         return layer.property("ADBE Effect Parade");
     }
@@ -66,12 +66,12 @@
         setExpr(prop(fx, "ADBE Glo2-0002", 2),
             'effect("' + CTRL.threshold + '")(1);');
 
-        // Самый маленький проход первый, самый большой (= BF Radius) последний.
+        // The smallest pass comes first, the largest (= BF Radius) last.
         setExpr(prop(fx, "ADBE Glo2-0003", 3),
             'var s = Math.max(effect("' + CTRL.spread + '")(1), 1.01);\n' +
             'effect("' + CTRL.radius + '")(1) / Math.pow(s, ' + (n - 1 - i) + ');');
 
-        // Веса проходов нормированы, чтобы общая яркость не зависела от их количества.
+        // Pass weights are normalized so overall brightness does not depend on the pass count.
         setExpr(prop(fx, "ADBE Glo2-0004", 4),
             'var f = clamp(effect("' + CTRL.falloff + '")(1), 0, 0.95), sum = 0;\n' +
             'for (var k = 0; k < ' + n + '; k++) sum += Math.pow(1 - f, k);\n' +
@@ -86,7 +86,7 @@
             colors.setValue(useTint ? 2 : 1);
         }
 
-        // Цвет A — светлое «ядро», цвет B — сам оттенок.
+        // Color A is the bright core, color B is the tint itself.
         setExpr(prop(fx, "ADBE Glo2-0012", 12),
             'var c = effect("' + CTRL.color + '")(1);\n[(c[0] + 1) / 2, (c[1] + 1) / 2, (c[2] + 1) / 2, 1];');
         setExpr(prop(fx, "ADBE Glo2-0013", 13),
@@ -117,20 +117,20 @@
     function withUndo(fn) {
         var comp = getComp();
         if (!comp) {
-            alert("Сначала откройте композицию.", SCRIPT_NAME);
+            alert("Open a composition first.", SCRIPT_NAME);
             return;
         }
         app.beginUndoGroup(SCRIPT_NAME);
         try {
             fn(comp);
         } catch (e) {
-            alert("Ошибка: " + e.toString() + (e.line ? " (строка " + e.line + ")" : ""), SCRIPT_NAME);
+            alert("Error: " + e.toString() + (e.line ? " (line " + e.line + ")" : ""), SCRIPT_NAME);
         } finally {
             app.endUndoGroup();
         }
     }
 
-    // ---------- цвет ----------
+    // ---------- color ----------
 
     function rgbToHex(c) {
         return (Math.round(c[0] * 255) << 16) | (Math.round(c[1] * 255) << 8) | Math.round(c[2] * 255);
@@ -140,7 +140,7 @@
         return [((h >> 16) & 255) / 255, ((h >> 8) & 255) / 255, (h & 255) / 255];
     }
 
-    // ---------- интерфейс ----------
+    // ---------- UI ----------
 
     function buildUI(thisObj) {
         var win = (thisObj instanceof Panel)
@@ -152,12 +152,12 @@
         win.margins = 10;
 
         var presetRow = win.add("group");
-        presetRow.add("statictext", undefined, "Пресет:").preferredSize.width = 90;
+        presetRow.add("statictext", undefined, "Preset:").preferredSize.width = 90;
         var presetNames = [];
         for (var p = 0; p < PRESETS.length; p++) presetNames.push(PRESETS[p].name);
         var presetList = presetRow.add("dropdownlist", undefined, presetNames);
 
-        var params = win.add("panel", undefined, "Параметры");
+        var params = win.add("panel", undefined, "Settings");
         params.alignChildren = ["fill", "top"];
         params.margins = [10, 14, 10, 10];
 
@@ -172,24 +172,24 @@
         }
 
         var passRow = params.add("group");
-        passRow.add("statictext", undefined, "Проходов:").preferredSize.width = 90;
+        passRow.add("statictext", undefined, "Passes:").preferredSize.width = 90;
         var passItems = [];
         for (var n = 3; n <= 10; n++) passItems.push(String(n));
         var passList = passRow.add("dropdownlist", undefined, passItems);
-        passList.helpTip = "Сколько слоёв Glow в стеке. Больше — мягче хвост, но медленнее рендер.";
+        passList.helpTip = "How many Glow layers are stacked. More gives a softer tail but renders slower.";
 
-        var radiusField = field("Радиус:", 150, "Радиус самого большого прохода, px");
-        var intensityField = field("Яркость:", 1.5, "Общая интенсивность свечения");
-        var thresholdField = field("Порог, %:", 50, "Ниже — светится больше областей");
-        var falloffField = field("Затухание:", 0.4, "0..0.95 — насколько тусклее большие проходы");
-        var spreadField = field("Шаг радиуса:", 2, "Во сколько раз радиус растёт от прохода к проходу");
+        var radiusField = field("Radius:", 150, "Radius of the largest pass, px");
+        var intensityField = field("Intensity:", 1.5, "Overall glow intensity");
+        var thresholdField = field("Threshold, %:", 50, "Lower makes more areas glow");
+        var falloffField = field("Falloff:", 0.4, "0..0.95 - how much dimmer the larger passes are");
+        var spreadField = field("Radius step:", 2, "How many times the radius grows from pass to pass");
 
         var colorRow = params.add("group");
-        var tintCheck = colorRow.add("checkbox", undefined, "Свой цвет");
+        var tintCheck = colorRow.add("checkbox", undefined, "Custom color");
         tintCheck.preferredSize.width = 90;
         var swatch = colorRow.add("button", undefined, "");
         swatch.preferredSize = [48, 20];
-        swatch.helpTip = "Нажмите, чтобы выбрать цвет";
+        swatch.helpTip = "Click to pick a color";
         swatch.onDraw = function () {
             var g = this.graphics;
             var c = state.color;
@@ -206,13 +206,13 @@
             }
         };
 
-        var applyBtn = win.add("button", undefined, "Применить к выделенным слоям");
-        var adjBtn = win.add("button", undefined, "Новый корректирующий слой");
-        var removeBtn = win.add("button", undefined, "Убрать свечение");
+        var applyBtn = win.add("button", undefined, "Apply to selected layers");
+        var adjBtn = win.add("button", undefined, "New adjustment layer");
+        var removeBtn = win.add("button", undefined, "Remove glow");
 
         var hint = win.add("statictext", undefined,
-            "Совет: 32 bpc в настройках проекта даёт заметно более мягкое свечение. " +
-            "Всё настраивается потом ползунками BF в Effect Controls.", {multiline: true});
+            "Tip: 32 bpc in Project Settings gives a noticeably softer glow. " +
+            "Everything can be tweaked later with the BF sliders in Effect Controls.", {multiline: true});
         hint.preferredSize.height = 44;
 
         function loadPreset(preset) {
@@ -251,7 +251,7 @@
             withUndo(function (comp) {
                 var layers = selectedEffectLayers(comp);
                 if (!layers.length) {
-                    alert("Выделите один или несколько слоёв.", SCRIPT_NAME);
+                    alert("Select one or more layers.", SCRIPT_NAME);
                     return;
                 }
                 var opts = readOptions();
