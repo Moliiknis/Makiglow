@@ -7,6 +7,7 @@
 //         -> weighted sum -> exposure / tint -> composite over source -> back to output depth.
 
 #include "BloomForge.h"
+#include "MakiUI.h"
 
 #include <algorithm>
 #include <atomic>
@@ -519,9 +520,10 @@ static PF_Err About(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef* param
 static PF_Err GlobalSetup(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef* params[], PF_LayerDef* output)
 {
     out_data->my_version = PF_VERSION(MAJOR_VERSION, MINOR_VERSION, BUG_VERSION, STAGE_VERSION, BUILD_VERSION);
-    out_data->out_flags = PF_OutFlag_DEEP_COLOR_AWARE | PF_OutFlag_I_EXPAND_BUFFER;
+    out_data->out_flags = PF_OutFlag_DEEP_COLOR_AWARE | PF_OutFlag_I_EXPAND_BUFFER | PF_OutFlag_SEND_UPDATE_PARAMS_UI;
     out_data->out_flags2 =
         PF_OutFlag2_SUPPORTS_SMART_RENDER | PF_OutFlag2_FLOAT_COLOR_AWARE | PF_OutFlag2_SUPPORTS_THREADED_RENDERING;
+    MakiUI_Register(in_data, BF_NAME);
     return PF_Err_NONE;
 }
 
@@ -530,6 +532,7 @@ static PF_Err ParamsSetup(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef*
     PF_Err err = PF_Err_NONE;
     PF_ParamDef def;
 
+    PF_ADD_POPUPX(MAKIUI_NAME, MakiUI_NUM_CHOICES, MakiUI_FULL, MAKIUI_CHOICES, MAKIUI_FLAGS, UI_DISK_ID);
     PF_ADD_FLOAT_SLIDERX("Threshold", 0, 10, 0, 1, 0.25, PF_Precision_HUNDREDTHS, 0, 0, THRESHOLD_DISK_ID);
     PF_ADD_FLOAT_SLIDERX("Threshold Softness", 0, 1, 0, 1, 0.5, PF_Precision_HUNDREDTHS, 0, 0, SOFTNESS_DISK_ID);
     PF_ADD_FLOAT_SLIDERX("Radius", 1, 4000, 1, 1000, 150, PF_Precision_TENTHS, 0, 0, RADIUS_DISK_ID);
@@ -716,6 +719,16 @@ extern "C" DllExport PF_Err PluginDataEntryFunction2(PF_PluginDataPtr inPtr,
     return result;
 }
 
+// Minimal keeps only Threshold, Radius and Exposure in Effect Controls.
+static void UpdateInterface(PF_InData* in_data, PF_ParamDef* params[])
+{
+    const bool minimal = params[BF_UI]->u.pd.value == MakiUI_MINIMAL;
+    bool hidden[BF_NUM_PARAMS] = {};
+    for (int i = BF_UI + 1; i < BF_NUM_PARAMS; ++i)
+        hidden[i] = minimal && i != BF_THRESHOLD && i != BF_RADIUS && i != BF_EXPOSURE;
+    MakiUI_Apply(in_data, hidden, BF_NUM_PARAMS);
+}
+
 PF_Err EffectMain(
     PF_Cmd cmd, PF_InData* in_data, PF_OutData* out_data, PF_ParamDef* params[], PF_LayerDef* output, void* extra)
 {
@@ -732,6 +745,10 @@ PF_Err EffectMain(
             break;
         case PF_Cmd_PARAMS_SETUP:
             err = ParamsSetup(in_data, out_data, params, output);
+            break;
+        case PF_Cmd_UPDATE_PARAMS_UI:
+        case PF_Cmd_USER_CHANGED_PARAM:
+            UpdateInterface(in_data, params);
             break;
         case PF_Cmd_SMART_PRE_RENDER:
             err = PreRender(in_data, out_data, reinterpret_cast<PF_PreRenderExtra*>(extra));

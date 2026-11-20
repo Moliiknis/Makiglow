@@ -41,6 +41,7 @@
 enum
 {
     BF_INPUT = 0,
+    BF_UI, // "Interface": Full | Minimal
     BF_THRESHOLD,
     BF_SOFTNESS,
     BF_RADIUS,
@@ -66,7 +67,8 @@ enum
     TINT_COLOR_DISK_ID,
     TINT_AMOUNT_DISK_ID,
     COMPOSITE_DISK_ID,
-    LINEAR_DISK_ID
+    LINEAR_DISK_ID,
+    UI_DISK_ID = 100
 };
 
 enum

@@ -42,7 +42,7 @@ resource 'PiPL' (16000) {
 		},
 		/* DEEP_COLOR_AWARE | I_EXPAND_BUFFER */
 		AE_Effect_Global_OutFlags {
-			0x2000200
+			0x6000200
 		},
 		/* SUPPORTS_SMART_RENDER | FLOAT_COLOR_AWARE | SUPPORTS_THREADED_RENDERING */
 		AE_Effect_Global_OutFlags_2 {

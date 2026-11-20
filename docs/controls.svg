@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 355" width="800" height="355" role="img" aria-label="Effect Controls in Full and Minimal">
+  <rect width="800" height="355" rx="14" fill="#141419"/>
+  <g transform="translate(20,0)">
+<text x="0" y="22" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="15" font-weight="700" fill="#ff7a3d">Full</text>
+<rect x="0" y="36" width="360" height="299" rx="8" fill="#232323" stroke="#000" stroke-opacity=".6"/>
+<rect x="0" y="36" width="360" height="28" rx="8" fill="#2c2c2c"/><rect x="0" y="56" width="360" height="8" fill="#2c2c2c"/>
+<text x="12" y="55" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="700" fill="#d8d8d8">fx</text>
+<text x="34" y="55" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12.5" font-weight="600" fill="#e6e6e6">Makiglow</text>
+<text x="300" y="55" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">Reset</text>
+
+<text x="30" y="87" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Interface</text>
+<rect x="196" y="73" width="150" height="19" rx="3" fill="#1d2a3a" stroke="#ff7a3d"/><text x="204" y="87" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#e0e0e0">Full</text><path d="M332 80l4 4 4-4" fill="none" stroke="#aaa" stroke-width="1.4"/>
+<path d="M14 98l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="110" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Threshold</text>
+<text x="200" y="110" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.25</text>
+<path d="M14 121l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="133" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Threshold Softness</text>
+<text x="200" y="133" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.50</text>
+<path d="M14 144l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="156" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Radius</text>
+<text x="200" y="156" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">150.0</text>
+<path d="M14 167l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="179" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Exposure</text>
+<text x="200" y="179" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.00</text>
+<path d="M14 190l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="202" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Falloff</text>
+<text x="200" y="202" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">25.0%</text>
+<path d="M14 213l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="225" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Aspect</text>
+<text x="200" y="225" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.00</text>
+
+<text x="30" y="248" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Tint Color</text>
+<rect x="200" y="235" width="26" height="16" rx="2" fill="#ffaa5a" stroke="#111"/>
+<path d="M14 259l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="271" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Tint Amount</text>
+<text x="200" y="271" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.0%</text>
+
+<text x="30" y="294" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Composite</text>
+<rect x="196" y="280" width="150" height="19" rx="3" fill="#2e2e2e" stroke="#444"/><text x="204" y="294" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#e0e0e0">Add</text><path d="M332 287l4 4 4-4" fill="none" stroke="#aaa" stroke-width="1.4"/>
+
+<text x="30" y="317" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Linear Blending</text>
+<rect x="200" y="305" width="14" height="14" rx="2" fill="#3d9bff"/><path d="M203 312l3 3 6-7" fill="none" stroke="#fff" stroke-width="1.8"/>
+</g>
+  <g transform="translate(420,0)">
+<text x="0" y="22" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="15" font-weight="700" fill="#ff7a3d">Minimal</text>
+<rect x="0" y="36" width="360" height="138" rx="8" fill="#232323" stroke="#000" stroke-opacity=".6"/>
+<rect x="0" y="36" width="360" height="28" rx="8" fill="#2c2c2c"/><rect x="0" y="56" width="360" height="8" fill="#2c2c2c"/>
+<text x="12" y="55" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="700" fill="#d8d8d8">fx</text>
+<text x="34" y="55" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12.5" font-weight="600" fill="#e6e6e6">Makiglow</text>
+<text x="300" y="55" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">Reset</text>
+
+<text x="30" y="87" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Interface</text>
+<rect x="196" y="73" width="150" height="19" rx="3" fill="#1d2a3a" stroke="#ff7a3d"/><text x="204" y="87" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#e0e0e0">Minimal</text><path d="M332 80l4 4 4-4" fill="none" stroke="#aaa" stroke-width="1.4"/>
+<path d="M14 98l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="110" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Threshold</text>
+<text x="200" y="110" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.25</text>
+<path d="M14 121l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="133" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Radius</text>
+<text x="200" y="133" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">150.0</text>
+<path d="M14 144l6 4-6 4z" fill="#8a8a8a"/>
+<text x="30" y="156" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#cfcfcf">Exposure</text>
+<text x="200" y="156" font-family="'Segoe UI Variable Display','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#3d9bff">0.00</text>
+</g>
+  <path d="M388 120.0h24" stroke="#ff7a3d" stroke-width="2" stroke-linecap="round" marker-end="url(#arr)"/>
+  <defs><marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l8 4-8 4z" fill="#ff7a3d"/></marker></defs>
+</svg>

@@ -7,7 +7,7 @@ New-Item -ItemType Directory -Force $obj | Out-Null
 
 $includes = "/I`"$sdk\Headers`" /I`"$sdk\Headers\SP`" /I`"$sdk\Headers\Win`" /I`"$sdk\Resources`" /I`"$sdk\Util`""
 $sources = "`"$PSScriptRoot\profile_test.cpp`" `"$sdk\Util\AEGP_SuiteHandler.cpp`" `"$sdk\Util\MissingSuiteError.cpp`""
-$cmd = "`"$vs\VC\Auxiliary\Build\vcvars64.bat`" >nul && cl /nologo /std:c++17 /EHsc /O2 /DMSWindows /DWIN32 /D_WINDOWS $includes $sources /Fo`"$obj\\`" /Fe`"$obj\profile_test.exe`" >`"$obj\build.log`""
+$cmd = "`"$vs\VC\Auxiliary\Build\vcvars64.bat`" >nul 2>nul && cl /nologo /std:c++17 /EHsc /O2 /DMSWindows /DWIN32 /D_WINDOWS $includes $sources /Fo`"$obj\\`" /Fe`"$obj\profile_test.exe`" >`"$obj\build.log`""
 cmd /c $cmd
 if ($LASTEXITCODE -ne 0) { Get-Content "$obj\build.log"; throw "Test build failed." }
 & "$obj\profile_test.exe"
