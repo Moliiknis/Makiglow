@@ -2,10 +2,13 @@
 
 <p align="center">
   <a href="https://github.com/Moliiknis/Makiglow/releases/latest"><img alt="Download" src="https://img.shields.io/github/v/release/Moliiknis/Makiglow?style=for-the-badge&label=download&color=ff7a3d&labelColor=1b1b24"></a>
+  <a href="https://github.com/Moliiknis/Makiglow/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/Moliiknis/Makiglow/total?style=for-the-badge&color=ff7a3d&labelColor=1b1b24"></a>
   <img alt="After Effects 2022+" src="https://img.shields.io/badge/After%20Effects-2022%2B-9999ff?style=for-the-badge&labelColor=1b1b24">
   <img alt="Windows 10/11" src="https://img.shields.io/badge/Windows-10%20%7C%2011-3b82f6?style=for-the-badge&labelColor=1b1b24">
   <a href="LICENSE.md"><img alt="License: PolyForm Noncommercial" src="https://img.shields.io/badge/license-noncommercial-a1a1aa?style=for-the-badge&labelColor=1b1b24"></a>
 </p>
+
+<p align="center"><b>Soft, natural glow for After Effects</b><br><sub>Мягкое естественное свечение для After Effects</sub></p>
 
 <p align="center"><b>English</b> · <a href="#русский">Русский</a></p>
 
