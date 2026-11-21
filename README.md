@@ -12,7 +12,7 @@
 
 <p align="center"><b>English</b> · <a href="#русский">Русский</a></p>
 
-<p align="center"><a href="https://github.com/Moliiknis/Makiglow/releases/latest"><b>⬇ Download Makiglow-1.1.0-Setup.exe</b></a></p>
+<p align="center"><a href="https://github.com/Moliiknis/Makiglow/releases/latest"><b>⬇ Download Makiglow-1.2.0-Setup.exe</b></a></p>
 
 ## English
 
@@ -35,7 +35,7 @@ Choose how much interface you see. Two presets come built in, **Classic** (every
 
 ### Install
 
-1. Download **`Makiglow-1.1.0-Setup.exe`** from [Releases](https://github.com/Moliiknis/Makiglow/releases/latest).
+1. Download **`Makiglow-1.2.0-Setup.exe`** from [Releases](https://github.com/Moliiknis/Makiglow/releases/latest).
 2. Close After Effects and run the installer. It asks for administrator rights because the effect goes into the After Effects folder.
 3. Start After Effects and open **Effect › Makimchi › Makiglow**.
 
@@ -49,7 +49,7 @@ Choose how much interface you see. Two presets come built in, **Classic** (every
 Needs Visual Studio 2022+ with *Desktop development with C++* and the [After Effects SDK](https://developer.adobe.com/after-effects/). The SDK is looked up in `%USERPROFILE%\Downloads\AfterEffectsSDK_27.0.0_win\AfterEffectsSDK\Examples`; set `AESDK` to use another folder.
 
 ```powershell
-.\build-installer.ps1   # builds the plug-in and release\Makiglow-1.1.0-Setup.exe
+.\build-installer.ps1   # builds the plug-in and release\Makiglow-1.2.0-Setup.exe
 ```
 
 
@@ -93,7 +93,7 @@ Needs Visual Studio 2022+ with *Desktop development with C++* and the [After Eff
 
 ### Установка
 
-1. Нужно скачать **`Makiglow-1.1.0-Setup.exe`** со страницы [Releases](https://github.com/Moliiknis/Makiglow/releases/latest).
+1. Нужно скачать **`Makiglow-1.2.0-Setup.exe`** со страницы [Releases](https://github.com/Moliiknis/Makiglow/releases/latest).
 2. Нужно закрыть After Effects и запустить установщик. Он запросит права администратора, потому что эффект ставится в папку After Effects.
 3. Нужно открыть After Effects: **Эффект › Makimchi › Makiglow**.
 
@@ -107,7 +107,7 @@ Needs Visual Studio 2022+ with *Desktop development with C++* and the [After Eff
 Нужны Visual Studio 2022+ с *Desktop development with C++* и [After Effects SDK](https://developer.adobe.com/after-effects/). SDK ищется в `%USERPROFILE%\Downloads\AfterEffectsSDK_27.0.0_win\AfterEffectsSDK\Examples`, другую папку нужно указать в переменной `AESDK`.
 
 ```powershell
-.\build-installer.ps1   # собирает плагин и release\Makiglow-1.1.0-Setup.exe
+.\build-installer.ps1   # собирает плагин и release\Makiglow-1.2.0-Setup.exe
 ```
 
 

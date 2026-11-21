@@ -1,6 +1,6 @@
 ﻿; Inno Setup 6 script. Build with ..\build-installer.ps1
 #define AppName "Makiglow"
-#define AppVersion "1.1.0"
+#define AppVersion "1.2.0"
 #define RepoUrl "https://github.com/Moliiknis/Makiglow"
 ; Overridable for tests: ISCC /DPriv=lowest /DPanelRoot=C:\some\dir
 #ifndef Priv
